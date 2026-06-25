@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farida Gupta: Handcraft Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Jost", sans-serif;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white ">
+  <!-- Announcement Bar -->
+  <div
+    class="fixed top-0 left-0 right-0 z-50 bg-[#E8C167] text-black flex items-center justify-between px-2 sm:px-4 md:px-7 py-2">
+    <!-- Left Arrow -->
+    <button onclick="changeAnnouncement(-1)"
+      class="text-xl sm:text-2xl md:text-3xl opacity-70 hover:opacity-100 transition px-2">
+      &#8249;
+    </button>
+
+    <!-- Announcement -->
+    <div class="flex-1 overflow-hidden mx-2 sm:mx-4">
+      <div id="announcement" class="transition-all duration-500">
+        <p id="ann-text"
+          class="text-center text-[11px] sm:text-[13px] md:text-[15px] leading-5 whitespace-nowrap overflow-hidden text-ellipsis">
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Arrow -->
+    <button onclick="changeAnnouncement(1)"
+      class="text-xl sm:text-2xl md:text-3xl opacity-70 hover:opacity-100 transition px-2">
+      &#8250;
+    </button>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav
+    class="fixed top-11 left-0 right-0 z-50 bg-white border-b border-gray-100 px-4 sm:px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <img src="./images/logo1.png" alt="Logo" class="w-32 sm:w-42 md:w-48 lg:w-[200px]" />
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex items-center gap-7 text-[12px] tracking-[0.15em] uppercase text-gray-700 font-semibold">
+      <li><a href="#" class="hover:text-[#7B1D2A]">New Arrivals</a></li>
+      <li><a href="#" class="hover:text-[#7B1D2A]">FG Woman</a></li>
+      <li><a href="#" class="hover:text-[#7B1D2A]">FG Bestsellers</a></li>
+      <li><a href="#" class="hover:text-[#7B1D2A]">FG Basics</a></li>
+      <li><a href="#" class="hover:text-[#7B1D2A]">Sale</a></li>
+      <li><a href="#" class="hover:text-[#7B1D2A]">FG Surplus</a></li>
+      <li><a href="#" class="hover:text-[#7B1D2A]">Exhibitions</a></li>
+    </ul>
+
+    <!-- Right Icons -->
+    <div class="flex items-center gap-3 sm:gap-5">
+      <!-- Currency -->
+      <span class="hidden sm:flex items-center gap-1 text-sm font-medium tracking-wider">
+        ₹ INR
+      </span>
+
+      <!-- Search -->
+      <button class="hidden sm:block hover:text-[#7B1D2A]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+        </svg>
+      </button>
+
+      <!-- Wishlist -->
+      <button class="hidden sm:block hover:text-[#7B1D2A]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      </button>
+
+      <!-- Account -->
+      <button class="hidden sm:block hover:text-[#7B1D2A]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+      </button>
+
+      <!-- Cart -->
+      <button class="hidden sm:block hover:text-[#7B1D2A]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.5" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+      </button>
+
+      <!-- Hamburger -->
+      <button onclick="openMenu()" class="lg:hidden hover:text-[#7B1D2A]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================= OVERLAY ================= -->
+
+  <div id="overlay" onclick="closeMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+  <!-- ================= MOBILE SIDEBAR ================= -->
+
+  <div id="mobileMenu"
+    class="fixed top-0 left-0 h-screen w-80 max-w-[85%] bg-white z-50 -translate-x-full transition-transform duration-300 shadow-2xl">
+    <!-- Header -->
+
+    <div class="flex items-center justify-between px-6 py-5 border-b">
+      <img src="./images/logo1.png" class="w-28" />
+
+      <button onclick="closeMenu()" class="text-3xl hover:text-[#7B1D2A]">
+        &times;
+      </button>
+    </div>
+
+    <!-- Menu -->
+
+    <div class="py-2">
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>NEW ARRIVALS</span>
+        <span>›</span>
+      </a>
+
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>FG WOMAN</span>
+        <span>›</span>
+      </a>
+
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>FG BESTSELLERS</span>
+        <span>›</span>
+      </a>
+
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>FG BASICS</span>
+        <span>›</span>
+      </a>
+
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>SALE</span>
+        <span>›</span>
+      </a>
+
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>FG SURPLUS</span>
+        <span>›</span>
+      </a>
+
+      <a href="#" class="flex justify-between items-center px-6 py-4 hover:bg-gray-100">
+        <span>EXHIBITIONS</span>
+        <span>›</span>
+      </a>
+    </div>
+
+    <!-- Bottom -->
+
+    <div class="absolute bottom-0 left-0 right-0 border-t">
+      <a href="#" class="block px-6 py-4 hover:bg-gray-100"> ₹ INR </a>
+
+      <a href="#" class="block px-6 py-4 hover:bg-gray-100"> Wishlist </a>
+
+      <a href="#" class="block px-6 py-4 hover:bg-gray-100"> My Account </a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-[92px] right-0 w-full bg-white shadow-lg z-40">
+    <ul class="flex flex-col text-sm uppercase font-semibold tracking-wider">
+      <li><a href="#" class="block px-6 py-4 border-b">New Arrivals</a></li>
+      <li><a href="#" class="block px-6 py-4 border-b">FG Woman</a></li>
+      <li><a href="#" class="block px-6 py-4 border-b">FG Bestsellers</a></li>
+      <li><a href="#" class="block px-6 py-4 border-b">FG Basics</a></li>
+      <li><a href="#" class="block px-6 py-4 border-b">Sale</a></li>
+      <li><a href="#" class="block px-6 py-4 border-b">FG Surplus</a></li>
+      <li><a href="#" class="block px-6 py-4">Exhibitions</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Image Slider -->
+  <section class="w-full mt-20">
+    <div class="relative w-full overflow-hidden">
+
+      <!-- Slider -->
+      <div id="slider" class="flex transition-transform duration-700 ease-in-out py-8 mt-8">
+
+        <!-- ================= Slide 1 ================= -->
+        <div class="min-w-full flex justify-center">
+          <div class="w-[96%] overflow-hidden rounded-2xl">
+
+            <!-- Mobile -->
+            <img src="./images/mobile-sehra-banner.jpg" alt="Banner"
+              class="block sm:hidden w-full h-auto rounded-2xl" />
+
+            <!-- Desktop -->
+            <img src="./images/sehra-banner.png" alt="Banner" class="hidden sm:block w-full h-auto rounded-2xl" />
+
+          </div>
+        </div>
+
+        <!-- ================= Slide 2 ================= -->
+        <div class="min-w-full flex justify-center">
+          <div class="w-[96%] overflow-hidden rounded-2xl">
+
+            <!-- Mobile -->
+            <img src="./images/Roza-mobile-banner.jpg" alt="Banner" class="block sm:hidden w-full h-auto rounded-2xl" />
+
+            <!-- Desktop -->
+            <img src="./images/Roza-banner.jpg" alt="Banner" class="hidden sm:block w-full h-auto rounded-2xl" />
+
+          </div>
+        </div>
+
+        <!-- ================= Slide 3 ================= -->
+        <div class="min-w-full flex justify-center">
+          <div class="w-[96%] overflow-hidden rounded-2xl">
+
+            <!-- Mobile -->
+            <img src="./images/mobile-bestseller.jpg" alt="Banner"
+              class="block sm:hidden w-full h-auto rounded-2xl" />
+
+            <!-- Desktop -->
+            <img src="./images/homepage_banner1.jpg" alt="Banner" class="hidden sm:block w-full h-auto rounded-2xl" />
+
+          </div>
+        </div>
+        <!-- ================= Slide 4 ================= -->
+        <div class="min-w-full flex justify-center">
+          <div class="w-[96%] overflow-hidden rounded-2xl">
+
+            <!-- Mobile -->
+            <img src="./images/mobile-homepage-banner-img4.jpg" alt="Banner"
+              class="block sm:hidden w-full h-auto rounded-2xl" />
+
+            <!-- Desktop -->
+            <img src="./images/homepage_banner-img4.jpg" alt="Banner" class="hidden sm:block w-full h-auto rounded-2xl" />
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Previous Button -->
+      <button onclick="changeSlide(-1)"
+        class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow-lg flex items-center justify-center">
+        ❮
+      </button>
+
+      <!-- Next Button -->
+      <button onclick="changeSlide(1)"
+        class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow-lg flex items-center justify-center">
+        ❯
+      </button>
+
+      <!-- Dots -->
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
+        <button onclick="goToSlide(0)" class="dot w-3 h-3 rounded-full bg-white"></button>
+
+        <button onclick="goToSlide(1)" class="dot w-3 h-3 rounded-full bg-white/50"></button>
+
+        <button onclick="goToSlide(2)" class="dot w-3 h-3 rounded-full bg-white/50"></button>
+
+        <button onclick="goToSlide(3)" class="dot w-3 h-3 rounded-full bg-white/50"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <div class="mt-8 sm:mt-10 px-3 sm:px-6 md:px-10 lg:px-20">
+    <video src="./video/video3.mp4" autoplay muted loop playsinline
+      class="w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[690px] object-cover rounded-xl sm:rounded-2xl lg:rounded-3xl"></video>
+  </div>
+
+  <!-- Crafts Section -->
+  <div class="px-3 sm:px-4 lg:px-6 mt-8 sm:mt-10 mb-8 sm:mb-10">
+    <!-- Title -->
+    <h2
+      class="text-center text-lg sm:text-xl tracking-[0.08em] sm:tracking-[0.1em] uppercase text-gray-700 mb-6 sm:mb-8 font-brand">
+      CRAFTS
+    </h2>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-2 gap-2 sm:gap-2 lg:gap-2 max-w-4xl mx-auto">
+      <!-- Card 1 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-tl-2xl sm:rounded-tl-3xl">
+        <img src="./images/craft-img1.jpg" alt="kurtas"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-tr-2xl sm:rounded-tr-3xl">
+        <img src="./images/craft-img2.jpg" alt="tops"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+
+      <!-- Card 3 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-bl-3xl sm:rounded-bl-3xl">
+        <img src="./images/craft-img3.jpg" alt="loungewear"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+
+      <!-- Card 4 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-br-2xl sm:rounded-br-3xl">
+        <img src="./images/craft-img4.jpg" alt="accessories"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+    </div>
+  </div>
+
+  <!-- FG Impact Section -->
+  <div class="relative rounded-xl sm:rounded-2xl overflow-hidden">
+
+    <h2
+      class="text-center text-lg sm:text-xl tracking-[0.08em] sm:tracking-[0.1em] uppercase text-gray-700 mb-6 sm:mb-8 font-brand">
+      fg impact
+    </h2>
+    <!-- Mobile Image -->
+    <img src="./images/mobile-impact.png" alt="FG Impact" class="block sm:hidden w-full h-[300px] object-cover " />
+
+    <!-- Desktop Image -->
+    <img src="./images/imgi_19_ImpactDesktopBG_37d250f7-a515-471b-8349-c331ad2f349e.webp" alt="FG Impact"
+      class="hidden sm:block w-full h-[420px] lg:h-auto object-cover" />
+
+    <!-- Mobile Black Overlay -->
+     <div class="absolute top-12 inset-0 bg-black/50 sm:hidden"></div>
+
+    <!-- Content -->
+    <div class="absolute inset-0 z-10 flex items-center justify-center lg:justify-end">
+      <div class="px-4  sm:px-8 lg:pr-20 text-center lg:text-right">
+        <!-- Your Content -->
+        <p class="text-lg sm:text-lg lg:text-[22px] uppercase text-white mb-6 lg:mb-8 leading-relaxed"> Bringing Joy, To
+          Artisans And Customers Alike. </p>
+        <div class="flex flex-wrap pr-10 justify-center lg:justify-end gap-6 sm:gap-10 lg:gap-14">
+          <div class="text-center">
+            <p class="text-lg sm:text-xl lg:text-2xl text-white mb-2"> 2000+ </p>
+            <p class="text-[10px] sm:text-xs lg:text-[15px] uppercase text-white"> Women <br /> Employed </p>
+          </div>
+          <div class="text-center">
+            <p class="text-lg sm:text-xl lg:text-2xl text-white mb-2"> 3000+ </p>
+            <p class="text-[10px] sm:text-xs lg:text-[15px] uppercase text-white"> Artisans <br /> Empowered </p>
+          </div>
+          <div class="text-center">
+            <p class="text-lg sm:text-xl lg:text-2xl text-white mb-2"> 200,000+ </p>
+            <p class="text-[10px] sm:text-xs lg:text-[15px] uppercase text-white"> Happy <br /> Customers </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Categories -->
+  <div class="px-3 sm:px-4 lg:px-6 mt-8 sm:mt-10 mb-8 sm:mb-10">
+    <!-- Title -->
+    <h2
+      class="text-center text-lg sm:text-xl tracking-[0.08em] sm:tracking-[0.1em] uppercase text-gray-700 mb-6 sm:mb-8 font-brand">
+      Categories
+    </h2>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-2 gap-2 sm:gap-2 lg:gap-2 max-w-4xl mx-auto">
+      <!-- Card 1 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-tl-2xl sm:rounded-tl-3xl">
+        <img src="./images/kurtas.jpg" alt="kurtas"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-tr-2xl sm:rounded-tr-3xl">
+        <img src="./images/tops.jpg" alt="tops"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+
+      <!-- Card 3 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-bl-3xl sm:rounded-bl-4xl">
+        <img src="./images/loungewear.jpg" alt="loungewear"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+
+      <!-- Card 4 -->
+      <div class="relative overflow-hidden cursor-pointer group rounded-br-2xl sm:rounded-br-3xl">
+        <img src="./images/accessories.jpg" alt="accessories"
+          class="w-full h-44 sm:h-64 md:h-80 lg:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+      </div>
+    </div>
+  </div>
+
+  <!-- FG Crafts Section -->
+ <div class="px-3 sm:px-4 lg:px-6 mt-8 sm:mt-10 mb-8 sm:mb-10">
+
+  <!-- Title -->
+  <h2
+    class="text-center text-lg sm:text-xl tracking-[0.08em] sm:tracking-[0.1em] uppercase text-gray-600 mb-8 sm:mb-10 font-brand">
+    FG CRAFTS
+  </h2>
+
+  <!-- ================= MOBILE VIEW ================= -->
+  <div class="grid grid-cols-2 gap-1 h-[300px] sm:hidden">
+
+    <!-- Left Big Image -->
+    <div class="relative row-span-2 overflow-hidden rounded-l-3xl group">
+      <img
+        src="./images/Making.webp"
+        alt="Block Making"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+
+      <div class="absolute inset-x-0 bottom-0 bg-black/40 py-4">
+        <p class="text-center text-white uppercase tracking-[0.18em] text-sm">
+          Block Making
+        </p>
+      </div>
+    </div>
+
+    <!-- Top Right -->
+    <div class="relative overflow-hidden rounded-tr-3xl group">
+      <img
+        src="./images/Printing.webp"
+        alt="Block Printing"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+
+      <div class="absolute inset-x-0 bottom-0 bg-black/40 py-3">
+        <p class="text-center text-white uppercase tracking-[0.18em] text-xs">
+          Block Printing
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Right -->
+    <div class="relative overflow-hidden rounded-br-3xl group">
+      <img
+        src="./images/Hand_Emb.webp"
+        alt="Hand Embroidery"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+
+      <div class="absolute inset-x-0 bottom-0 bg-black/40 py-3">
+        <p class="text-center text-white uppercase tracking-[0.18em] text-xs">
+          Hand Embroidery
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= DESKTOP/TABLET VIEW ================= -->
+  <div
+    class="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-7xl mx-auto"
+  >
+
+    <!-- Card 1 -->
+    <div class="flex flex-col items-center gap-3">
+      <div class="rounded-xl sm:rounded-2xl overflow-hidden w-full">
+        <img
+          src="./images/Making.webp"
+          alt="Block Making"
+          class="w-full h-72 md:h-80 lg:h-96 object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+
+      <p
+        class="text-xs sm:text-sm lg:text-[15px] tracking-[0.21em] uppercase text-[#7B1D2A]"
+      >
+        Block Making
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="flex flex-col items-center gap-3">
+      <div class="rounded-xl sm:rounded-2xl overflow-hidden w-full">
+        <img
+          src="./images/Printing.webp"
+          alt="Block Printing"
+          class="w-full h-72 md:h-80 lg:h-96 object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+
+      <p
+        class="text-xs sm:text-sm lg:text-[15px] tracking-[0.21em] uppercase text-[#7B1D2A]"
+      >
+        Block Printing
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="flex flex-col items-center gap-3">
+      <div class="rounded-xl sm:rounded-2xl overflow-hidden w-full">
+        <img
+          src="./images/Hand_Emb.webp"
+          alt="Hand Embroidery"
+          class="w-full h-72 md:h-80 lg:h-96 object-cover transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+
+      <p
+        class="text-xs sm:text-sm lg:text-[15px] tracking-[0.21em] uppercase text-[#7B1D2A]"
+      >
+        Hand Embroidery
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- Subscribe Section -->
+  <div class="max-w-lg w-full p-6 md:items-center">
+    <!-- Input Row -->
+    <div class="flex gap-1 w-full ">
+      <!-- Country -->
+      <div class="w-32">
+        <button
+          class="flex items-center gap-2 h-12 border border-gray-300 rounded-md px-3 py-2 bg-white hover:border-gray-400 transition w-full sm:w-auto">
+          <img src="https://flagcdn.com/w40/in.png" alt="flag" class="w-3 h-2 object-cover rounded-sm" />
+          <span class="text-xs text-gray-600">+91</span>
+          <span class="text-xs text-gray-400">▼</span>
+        </button>
+      </div>
+
+      
+    
+    <input
+  id="phone"
+  type="tel"
+  maxlength="10"
+  inputmode="numeric"
+  oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+  placeholder="Enter phone number"
+  class="flex-1 h-12 border border-gray-300 rounded-md px-4"
+/>
+</div>
+
+    <!-- Button -->
+    <button onclick="subscribe()" class="mt-4 w-full h-12 bg-[#7B1D2A] text-white rounded-md tracking-[0.2em]">
+      SUBSCRIBE
+    </button>
+  </div>
+
+  <!-- Footer -->
+
+  <footer class="bg-gray-50 border-t border-gray-200 mt-12">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <!-- Mobile Accordion -->
+      <div class="block lg:hidden">
+        <!-- Discover -->
+        <div class="border-b">
+          <button
+            class="footer-btn flex justify-between items-center w-full py-4 font-semibold uppercase tracking-wider">
+            <span>Discover Farida Gupta</span>
+            <span class="arrow">+</span>
+          </button>
+
+          <div class="footer-content hidden pb-4">
+            <ul class="space-y-2 text-sm">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Exhibitions</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Media</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Help -->
+        <div class="border-b">
+          <button
+            class="footer-btn flex justify-between items-center w-full py-4 font-semibold uppercase tracking-wider">
+            <span>Let Us Help You</span>
+            <span class="arrow">+</span>
+          </button>
+
+          <div class="footer-content hidden pb-4">
+            <ul class="space-y-2 text-sm">
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Refund Policy</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Follow -->
+        <div class="border-b">
+          <button
+            class="footer-btn flex justify-between items-center w-full py-4 font-semibold uppercase tracking-wider">
+            <span>Follow Us</span>
+            <span class="arrow">+</span>
+          </button>
+
+          <div class="footer-content hidden pb-4">
+            <ul class="space-y-2 text-sm">
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>Pinterest</li>
+              <li>X</li>
+              <li>Youtube</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="border-b">
+          <button
+            class="footer-btn flex justify-between items-center w-full py-4 font-semibold uppercase tracking-wider">
+            <span>Get In Touch</span>
+            <span class="arrow">+</span>
+          </button>
+
+          <div class="footer-content hidden pb-4 text-sm">
+            <p>Phone: +91 8287-567-567</p>
+            <p>Email: care@faridagupta.com</p>
+            <p>Mon-Sat : 9:30 AM - 6 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Footer -->
+      <div class="hidden lg:grid grid-cols-4 gap-10">
+        <!--4-column footer here -->
+
+        <!-- Column 1 -->
+        <div>
+          <h4 class="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-gray-800 mb-5">
+            Discover Farida Gupta
+          </h4>
+
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Newsletter</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Exhibitions</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Media</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div>
+          <h4 class="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-gray-800 mb-5">
+            Let Us Help You
+          </h4>
+
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Shipping & Delivery Policy</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Refund / Exchange Policy</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">EOSS T&C</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Cookies Policy</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">FAQ's</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm sm:text-base hover:text-[#7B1D2A]">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div>
+          <h4 class="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-gray-800 mb-5">
+            Follow Us
+          </h4>
+
+          <ul class="space-y-4">
+            <li>
+              <a href="#" class="flex items-center gap-3 text-sm sm:text-base hover:text-[#7B1D2A]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                Facebook
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="flex items-center gap-3 text-sm sm:text-base hover:text-[#7B1D2A]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
+                </svg>
+                Pinterest
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="flex items-center gap-3 text-sm sm:text-base hover:text-[#7B1D2A]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" fill="white" />
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="white" />
+                </svg>
+                Instagram
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="flex items-center gap-3 text-sm sm:text-base hover:text-[#7B1D2A]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.2 2h3.3l-7.2 8.3 8.5 11.2h-6.7L11 15 5 22H1.7l7.7-8.8L1.3 2h6.8l4.7 6.2z" />
+                </svg>
+                X
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="flex items-center gap-3 text-sm sm:text-base hover:text-[#7B1D2A]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.9 4 12 4 12 4S5.1 4 3.5 4.4a2.8 2.8 0 0 0-2 2A28 28 0 0 0 1 12a28 28 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.1 20 12 20 12 20s6.9 0 8.5-.4a2.8 2.8 0 0 0 2-2A28 28 0 0 0 23 12a28 28 0 0 0-.5-5.6z" />
+                  <polygon points="9.5,15 16,12 9.5,9" fill="white" />
+                </svg>
+                Youtube
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div>
+          <h4 class="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-gray-800 mb-5">
+            Get In Touch
+          </h4>
+
+          <div class="space-y-6 text-sm sm:text-base break-words">
+            <div>
+              <p class="font-semibold mb-2">For Product Queries:</p>
+
+              <p>
+                Phone:
+                <a href="tel:+918287567567" class="hover:underline">
+                  +91 8287-567-567
+                </a>
+              </p>
+
+              <p>
+                Email:
+                <a href="mailto:care@faridagupta.com" class="hover:underline">
+                  care@faridagupta.com
+                </a>
+              </p>
+
+              <p>Timing: 9:30 AM – 6:00 PM (IST)</p>
+              <p>Monday – Saturday</p>
+            </div>
+
+            <div>
+              <p class="font-semibold mb-2">
+                For Careers & HR Related Queries:
+              </p>
+
+              <p>
+                Email:
+                <a href="mailto:people@faridagupta.com" class="hover:underline">
+                  people@faridagupta.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Copyright -->
+<div class="border-t border-gray-300 py-4  ">
+  <p class="text-center text-sm sm:text-sm text-black tracking-wide">
+    &copy; 2026 FARIDA GUPTA INDIA
+  </p>
+</div>
+
+<!-- Mobile Bottom Navigation -->
+<div
+  class="fixed  bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg sm:hidden"
+>
+  <div class="grid grid-cols-5 h-16">
+
+    <!-- Search -->
+    <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-[#7B1D2A]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <span class="text-[11px]">Search</span>
+    </a>
+
+    <!-- Sale -->
+    <a href="#" class="flex flex-col items-center justify-center text-[#7B1D2A]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <line x1="19" y1="5" x2="5" y2="19"></line>
+        <circle cx="6.5" cy="6.5" r="2"></circle>
+        <circle cx="17.5" cy="17.5" r="2"></circle>
+      </svg>
+      <span class="text-[11px]">Sale</span>
+    </a>
+
+    <!-- New Arrivals -->
+    <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-[#7B1D2A]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"></polygon>
+      </svg>
+      <span class="text-[11px]">New Arrivals</span>
+    </a>
+
+    <!-- Exhibitions -->
+    <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-[#7B1D2A]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M3 9h18v11H3z"></path>
+        <path d="M7 9V5h10v4"></path>
+      </svg>
+      <span class="text-[11px]">Exhibitions</span>
+    </a>
+
+    <!-- Bag -->
+    <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-[#7B1D2A]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M6 7h12l-1 13H7L6 7z"></path>
+        <path d="M9 7V5a3 3 0 016 0v2"></path>
+      </svg>
+      <span class="text-[11px]">Bag</span>
+    </a>
+
+  </div>
+</div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
