@@ -26,46 +26,84 @@ const announcements = [
   const slider = document.getElementById("slider");
 const dots = document.querySelectorAll(".dot");
 
-let currentSlide = 0;
-const totalSlides = dots.length;
+// Original slides
+const slides = slider.children;
+const totalSlides = slides.length;
+
+// Clone first & last slide
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[totalSlides - 1].cloneNode(true);
+
+slider.appendChild(firstClone);
+slider.insertBefore(lastClone, slides[0]);
+
+let currentSlide = 1;
+
+// Start from first original slide
+slider.style.transition = "none";
+slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+setTimeout(() => {
+  slider.style.transition = "transform 0.7s ease-in-out";
+}, 50);
+
+function updateDots() {
+  let active = currentSlide - 1;
+
+  if (currentSlide === 0) active = totalSlides - 1;
+  if (currentSlide === totalSlides + 1) active = 0;
+
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("bg-white", index === active);
+    dot.classList.toggle("bg-white/50", index !== active);
+  });
+}
 
 function updateSlider() {
   slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-  dots.forEach((dot, index) => {
-    if (index === currentSlide) {
-      dot.classList.remove("bg-white/50");
-      dot.classList.add("bg-white");
-    } else {
-      dot.classList.remove("bg-white");
-      dot.classList.add("bg-white/50");
-    }
-  });
+  updateDots();
 }
 
 function changeSlide(direction) {
   currentSlide += direction;
-
-  if (currentSlide >= totalSlides) {
-    currentSlide = 0;
-  }
-
-  if (currentSlide < 0) {
-    currentSlide = totalSlides - 1;
-  }
-
   updateSlider();
 }
 
 function goToSlide(index) {
-  currentSlide = index;
+  currentSlide = index + 1;
   updateSlider();
 }
 
-// Auto Slide
-setInterval(() => {
-  changeSlide(1);
-}, 4000);
+slider.addEventListener("transitionend", () => {
+
+  // Last clone → Original first
+  if (currentSlide === totalSlides + 1) {
+    slider.style.transition = "none";
+    currentSlide = 1;
+    slider.style.transform = `translateX(-100%)`;
+
+    setTimeout(() => {
+      slider.style.transition = "transform 0.7s ease-in-out";
+    }, 20);
+  }
+
+  // First clone → Original last
+  if (currentSlide === 0) {
+    slider.style.transition = "none";
+    currentSlide = totalSlides;
+    slider.style.transform = `translateX(-${totalSlides * 100}%)`;
+
+    setTimeout(() => {
+      slider.style.transition = "transform 0.7s ease-in-out";
+    }, 20);
+  }
+
+  updateDots();
+});
+
+updateDots();
+
+
 
 
 // =========================
