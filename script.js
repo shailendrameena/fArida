@@ -83,7 +83,7 @@ slider.addEventListener("transitionend", () => {
     slider.style.transform = `translateX(-100%)`;
 
     setTimeout(() => {
-      slider.style.transition = "transform 0.7s ease-in-out";
+      slider.style.transition = "transform 0.3s ease-in-out";
     }, 20);
   }
 
@@ -94,7 +94,7 @@ slider.addEventListener("transitionend", () => {
     slider.style.transform = `translateX(-${totalSlides * 100}%)`;
 
     setTimeout(() => {
-      slider.style.transition = "transform 0.7s ease-in-out";
+      slider.style.transition = "transform 0.3s ease-in-out";
     }, 20);
   }
 
